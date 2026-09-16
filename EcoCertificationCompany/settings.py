@@ -141,5 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
-    "alfarrel-ersya-bhumilestari-mockapi.pws.cs.ui.ac.id",
+    "https://alfarrel-ersya-bhumilestari-mockapi.pws.cs.ui.ac.id",
 ]
