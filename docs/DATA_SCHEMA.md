@@ -20,7 +20,6 @@ Dokumen ini menetapkan bentuk data produk, nilai yang diperbolehkan, dan hubunga
 | `recycled_material_percent` | `verification.recycled_material_percent` | Dipertahankan, boleh `null` jika tidak relevan. |
 | `reusable` | `verification.reusable` | Dipertahankan. |
 | `summary` | `verification.summary` | Dipertahankan sebagai penjelasan singkat untuk pengguna. |
-| `is_mock` | `meta.is_mock` pada respons API | Dipindahkan ke metadata respons; bukan karakteristik produk. |
 
 ## 2. Struktur produk kanonis
 
@@ -31,8 +30,6 @@ Dokumen ini menetapkan bentuk data produk, nilai yang diperbolehkan, dan hubunga
   "slug": "tas-belanja-katun-pakai-ulang",
   "category": "daily_supplies",
   "description": "Tas belanja berbahan katun yang dapat digunakan berulang kali.",
-  "price": 35000,
-  "stock": 40,
   "seller_id": "sel-001",
   "image_path": "products/prd-001.webp",
   "materials": ["katun"],
@@ -68,8 +65,6 @@ Dokumen ini menetapkan bentuk data produk, nilai yang diperbolehkan, dan hubunga
 | `slug` | string | Ya | Unik, huruf kecil, angka, dan tanda hubung. Contoh `tas-belanja-katun`. |
 | `category` | enum | Ya | Harus salah satu kategori pada bagian 4. |
 | `description` | string | Ya | Penjelasan produk, disarankan 40-500 karakter. |
-| `price` | integer | Ya | Harga rupiah, minimal 0, tanpa `Rp`, titik, atau koma. |
-| `stock` | integer | Ya | Bilangan bulat minimal 0. |
 | `seller_id` | string | Ya | ID penjual yang benar-benar tersedia pada data `Seller`. Format yang disarankan `sel-NNN`. |
 | `image_path` | string | Ya | Path relatif atau URL yang valid. Nama file disarankan mengikuti `product_id`. |
 | `materials` | array string | Ya | Minimal satu material; gunakan huruf kecil dan istilah yang konsisten. |
@@ -140,7 +135,6 @@ Respons daftar:
 ```json
 {
   "meta": {
-    "is_mock": true,
     "count": 1
   },
   "data": [
@@ -153,7 +147,7 @@ Respons detail mengembalikan satu objek produk pada `data`. Respons tidak ditemu
 
 ```json
 {
-  "meta": { "is_mock": true },
+  "meta": {},
   "error": {
     "code": "PRODUCT_NOT_FOUND",
     "message": "Produk tidak ditemukan"
