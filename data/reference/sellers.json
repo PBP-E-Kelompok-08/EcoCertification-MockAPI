@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "seller_id": "sel-001",
     "name": "Bhumi Karya Bandung",
@@ -13,5 +13,50 @@
     "seller_id": "sel-003",
     "name": "Hijau Bersama Surabaya",
     "origin": "Surabaya, Jawa Timur"
+  },
+  {
+    "seller_id": "sel-004",
+    "name": "Nusa Daur Semarang",
+    "origin": "Semarang, Jawa Tengah"
+  },
+  {
+    "seller_id": "sel-005",
+    "name": "Rimba Kriya Jepara",
+    "origin": "Jepara, Jawa Tengah"
+  },
+  {
+    "seller_id": "sel-006",
+    "name": "Segar Alam Bogor",
+    "origin": "Bogor, Jawa Barat"
+  },
+  {
+    "seller_id": "sel-007",
+    "name": "Tenun Hijau Lombok",
+    "origin": "Lombok Tengah, Nusa Tenggara Barat"
+  },
+  {
+    "seller_id": "sel-008",
+    "name": "Anyam Lestari Cirebon",
+    "origin": "Cirebon, Jawa Barat"
+  },
+  {
+    "seller_id": "sel-009",
+    "name": "Bumi Bening Denpasar",
+    "origin": "Denpasar, Bali"
+  },
+  {
+    "seller_id": "sel-010",
+    "name": "Kayu Kita Malang",
+    "origin": "Malang, Jawa Timur"
+  },
+  {
+    "seller_id": "sel-011",
+    "name": "Sahabat Daur Makassar",
+    "origin": "Makassar, Sulawesi Selatan"
+  },
+  {
+    "seller_id": "sel-012",
+    "name": "Warna Alam Solo",
+    "origin": "Surakarta, Jawa Tengah"
   }
 ]

@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "partner_id": "vfp-001",
     "name": "EcoCheck Indonesia"
@@ -6,5 +6,17 @@
   {
     "partner_id": "vfp-002",
     "name": "Lembaga Verifikasi Bhumi"
+  },
+  {
+    "partner_id": "vfp-003",
+    "name": "Laboratorium Uji Material Nusantara"
+  },
+  {
+    "partner_id": "vfp-004",
+    "name": "Balai Sertifikasi Produk Hijau"
+  },
+  {
+    "partner_id": "vfp-005",
+    "name": "Lembaga Verifikasi Klaim Lestari"
   }
 ]
