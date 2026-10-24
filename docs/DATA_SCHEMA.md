@@ -78,7 +78,7 @@ Dokumen ini menetapkan bentuk data produk, nilai yang diperbolehkan, dan hubunga
 | `verification.valid_until` | date/null | Tidak | Harus sesudah `tested_at`. Produk menjadi `expired` jika tanggal ini terlewati. |
 | `verification.recycled_material_percent` | integer/null | Tidak | Rentang 0-100. Gunakan `null` jika kriteria tidak relevan atau belum diuji. |
 | `verification.reusable` | boolean/null | Tidak | `true`, `false`, atau `null` jika belum dinilai. |
-| `verification.eco_score` | number/null | Tidak | Rentang yang disarankan 0-10. Jangan diisi sebelum rumus dan kriterianya disepakati. |
+| `verification.eco_score` | number/null | Tidak | Rentang yang disarankan 0-10. Rumus pada bagian 9; `null` untuk status `pending` dan `rejected`. |
 | `verification.summary` | string/null | Tidak | Ringkasan hasil verifikasi yang dapat dipahami pembeli. |
 | `is_active` | boolean | Ya | `true` jika produk boleh ditampilkan dan dibeli. |
 
@@ -94,7 +94,7 @@ Dokumen ini menetapkan bentuk data produk, nilai yang diperbolehkan, dan hubunga
 | `furniture` | Furniture | Meja kayu daur ulang, kursi rotan |
 | `beauty_care` | Beauty & Care | Sabun batang, sampo isi ulang, skincare |
 
-Untuk 50 data awal, distribusi yang disarankan adalah 10 produk per kategori.
+Untuk 60 data awal (minimal 50 menurut ketentuan proyek), distribusi yang dipakai adalah 12 produk per kategori. Kategori hanya dikelola di sisi aplikasi utama, bukan di Mock API.
 
 ## 5. Nilai `eco_features`
 
@@ -180,3 +180,26 @@ Seller 1 ─── * Product * ─── 1 Category
 - `certification` tidak menjadi field database karena dapat diturunkan dari `status`.
 - `eco_score` bersifat nullable sampai kelompok memiliki metode penilaian yang konsisten.
 - `created_at` dan `updated_at` sebaiknya dibuat otomatis oleh Django dan tidak wajib ada pada dataset sumber.
+
+## 9. Rumus `eco_score`
+
+```text
+eco_score = min(jumlah eco_features, 5) + recycled_material_percent x 0.03 + (2 jika reusable = true)
+```
+
+- Rentang 0-10, satu desimal, pembulatan half-up. `recycled_material_percent` `null` dihitung 0.
+- Hanya diisi untuk status `verified` dan `expired`. Status `pending` dan `rejected` tetap `null`.
+- Contoh: 3 fitur, 0% daur ulang, reusable = 3 + 0 + 2 = 5.0; 2 fitur, 85% daur ulang, reusable = 2 + 2.55 + 2 = 6.6.
+- Skor ini bersifat sintetis untuk kebutuhan demo, bukan metodologi penilaian lingkungan yang baku.
+
+## 10. Komposisi data awal (60 produk)
+
+| Skenario | Jumlah | Keterangan |
+|---|---:|---|
+| `verified`, masa berlaku panjang | 34 | `valid_until` lebih dari 30 hari ke depan |
+| `verified`, hampir berakhir | 6 | `valid_until` dalam 30 hari |
+| `pending` | 8 | partner, tanggal, dan hasil uji `null` |
+| `rejected` | 6 | `summary` berisi alasan penolakan, `valid_until` dan `eco_score` `null` |
+| `expired` | 6 | `valid_until` sudah lewat, `eco_score` dipertahankan |
+
+12 seller dan 5 partner verifikasi fiktif; setiap seller punya 5 produk, dan `sel-011` tidak punya produk `verified`. Dataset dibuat dan divalidasi dengan `python tools/generate_mock_data.py` (tanggal acuan 24 Oktober 2026).

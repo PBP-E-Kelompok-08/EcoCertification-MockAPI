@@ -4,7 +4,9 @@
     "name": "Tas Belanja Katun Pakai Ulang",
     "slug": "tas-belanja-katun-pakai-ulang",
     "seller_id": "sel-001",
-    "materials": ["katun"],
+    "materials": [
+      "katun"
+    ],
     "origin": "Bandung, Jawa Barat",
     "eco_features": [
       "reusable",
@@ -22,7 +24,7 @@
       "valid_until": "2027-09-01",
       "recycled_material_percent": 0,
       "reusable": true,
-      "eco_score": null,
+      "eco_score": 5.0,
       "summary": "Dapat digunakan kembali dan dikemas tanpa plastik sekali pakai."
     }
   },
@@ -31,7 +33,9 @@
     "name": "Kaos Katun Organik",
     "slug": "kaos-katun-organik",
     "seller_id": "sel-001",
-    "materials": ["katun organik"],
+    "materials": [
+      "katun organik"
+    ],
     "origin": "Bandung, Jawa Barat",
     "eco_features": [
       "organic_material",
@@ -49,7 +53,7 @@
       "valid_until": "2027-09-03",
       "recycled_material_percent": 0,
       "reusable": true,
-      "eco_score": null,
+      "eco_score": 5.0,
       "summary": "Menggunakan katun organik dan diproduksi oleh penjahit lokal."
     }
   },
@@ -58,7 +62,10 @@
     "name": "Kotak Makan Bambu",
     "slug": "kotak-makan-bambu",
     "seller_id": "sel-002",
-    "materials": ["bambu", "baja tahan karat"],
+    "materials": [
+      "bambu",
+      "baja tahan karat"
+    ],
     "origin": "Sleman, DI Yogyakarta",
     "eco_features": [
       "reusable",
@@ -76,7 +83,7 @@
       "valid_until": "2027-09-05",
       "recycled_material_percent": null,
       "reusable": true,
-      "eco_score": null,
+      "eco_score": 5.0,
       "summary": "Dirancang untuk pemakaian berulang dengan material bambu dari sumber lokal."
     }
   },
@@ -85,7 +92,9 @@
     "name": "Meja Samping Kayu Daur Ulang",
     "slug": "meja-samping-kayu-daur-ulang",
     "seller_id": "sel-002",
-    "materials": ["kayu daur ulang"],
+    "materials": [
+      "kayu daur ulang"
+    ],
     "origin": "Sleman, DI Yogyakarta",
     "eco_features": [
       "recycled_material",
@@ -102,7 +111,7 @@
       "valid_until": "2027-09-07",
       "recycled_material_percent": 85,
       "reusable": true,
-      "eco_score": null,
+      "eco_score": 6.6,
       "summary": "Sebagian besar material berasal dari potongan kayu bekas produksi furnitur."
     }
   },
@@ -111,7 +120,10 @@
     "name": "Sampo Cair Isi Ulang",
     "slug": "sampo-cair-isi-ulang",
     "seller_id": "sel-003",
-    "materials": ["surfaktan berbasis tumbuhan", "botol aluminium"],
+    "materials": [
+      "surfaktan berbasis tumbuhan",
+      "botol aluminium"
+    ],
     "origin": "Surabaya, Jawa Timur",
     "eco_features": [
       "refillable",
@@ -124,7 +136,1589 @@
       "tested_at": null,
       "valid_until": null,
       "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim produk sedang menunggu proses verifikasi."
+    }
+  },
+  {
+    "product_id": "prd-006",
+    "name": "Kemeja Rami Pewarna Alami",
+    "slug": "kemeja-rami-pewarna-alami",
+    "seller_id": "sel-007",
+    "materials": [
+      "rami"
+    ],
+    "origin": "Lombok Tengah, Nusa Tenggara Barat",
+    "eco_features": [
+      "organic_material",
+      "biodegradable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-006",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-07-01",
+      "valid_until": "2027-07-01",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, berbahan yang dapat terurai secara biologis dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-007",
+    "name": "Syal Tenun Lombok Pewarna Alam",
+    "slug": "syal-tenun-lombok-pewarna-alam",
+    "seller_id": "sel-007",
+    "materials": [
+      "kapas",
+      "pewarna alam"
+    ],
+    "origin": "Lombok Tengah, Nusa Tenggara Barat",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-007",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-08-21",
+      "valid_until": "2027-08-21",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, memakai bahan utama dari sumber lokal dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-008",
+    "name": "Rok Tenun Ikat Katun Organik",
+    "slug": "rok-tenun-ikat-katun-organik",
+    "seller_id": "sel-007",
+    "materials": [
+      "katun organik"
+    ],
+    "origin": "Lombok Tengah, Nusa Tenggara Barat",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced",
+      "biodegradable"
+    ],
+    "verification": {
+      "verification_id": "ver-008",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-10-07",
+      "valid_until": "2027-10-07",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, memakai bahan utama dari sumber lokal dan berbahan yang dapat terurai secara biologis."
+    }
+  },
+  {
+    "product_id": "prd-009",
+    "name": "Sarung Tenun Katun Alami",
+    "slug": "sarung-tenun-katun-alami",
+    "seller_id": "sel-007",
+    "materials": [
+      "katun",
+      "pewarna alam"
+    ],
+    "origin": "Lombok Tengah, Nusa Tenggara Barat",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-009",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2025-11-13",
+      "valid_until": "2026-11-13",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 2.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik dan memakai bahan utama dari sumber lokal. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-010",
+    "name": "Celana Kulot Linen Organik",
+    "slug": "celana-kulot-linen-organik",
+    "seller_id": "sel-007",
+    "materials": [
+      "linen organik"
+    ],
+    "origin": "Lombok Tengah, Nusa Tenggara Barat",
+    "eco_features": [
+      "organic_material",
+      "biodegradable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-010",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Dokumen diterima dan menunggu penjadwalan pengujian."
+    }
+  },
+  {
+    "product_id": "prd-011",
+    "name": "Batik Tulis Pewarna Indigo",
+    "slug": "batik-tulis-pewarna-indigo",
+    "seller_id": "sel-012",
+    "materials": [
+      "katun primisima",
+      "indigo alami"
+    ],
+    "origin": "Surakarta, Jawa Tengah",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-011",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-06-27",
+      "valid_until": "2027-06-27",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, memakai bahan utama dari sumber lokal dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-012",
+    "name": "Kain Batik Cap Pewarna Soga",
+    "slug": "kain-batik-cap-pewarna-soga",
+    "seller_id": "sel-012",
+    "materials": [
+      "katun",
+      "soga alam"
+    ],
+    "origin": "Surakarta, Jawa Tengah",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced",
+      "biodegradable"
+    ],
+    "verification": {
+      "verification_id": "ver-012",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-07-28",
+      "valid_until": "2027-07-28",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, memakai bahan utama dari sumber lokal dan berbahan yang dapat terurai secara biologis."
+    }
+  },
+  {
+    "product_id": "prd-013",
+    "name": "Outer Batik Limbah Perca",
+    "slug": "outer-batik-limbah-perca",
+    "seller_id": "sel-012",
+    "materials": [
+      "kain perca batik"
+    ],
+    "origin": "Surakarta, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-013",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-09-16",
+      "valid_until": "2027-09-16",
+      "recycled_material_percent": 65,
       "reusable": true,
+      "eco_score": 7.0,
+      "summary": "Hasil uji menunjukkan produk mengandung 65% material daur ulang, dapat digunakan berulang kali dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-014",
+    "name": "Selendang Ecoprint Daun Jati",
+    "slug": "selendang-ecoprint-daun-jati",
+    "seller_id": "sel-012",
+    "materials": [
+      "katun",
+      "daun jati"
+    ],
+    "origin": "Surakarta, Jawa Tengah",
+    "eco_features": [
+      "organic_material",
+      "locally_sourced",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-014",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2024-12-25",
+      "valid_until": "2025-12-25",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Sebelumnya terverifikasi: produk menggunakan material organik, memakai bahan utama dari sumber lokal dan dikemas tanpa plastik sekali pakai. Masa berlaku berakhir pada 25 Desember 2025 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-015",
+    "name": "Jaket Denim Upcycle",
+    "slug": "jaket-denim-upcycle",
+    "seller_id": "sel-004",
+    "materials": [
+      "denim bekas"
+    ],
+    "origin": "Semarang, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-015",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim produk sedang menunggu proses verifikasi."
+    }
+  },
+  {
+    "product_id": "prd-016",
+    "name": "Kaos Serat Bambu",
+    "slug": "kaos-serat-bambu",
+    "seller_id": "sel-001",
+    "materials": [
+      "serat bambu"
+    ],
+    "origin": "Bandung, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "organic_material",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-016",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-09-09",
+      "valid_until": null,
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim biodegradable tidak terbukti: uji komposisi menemukan campuran poliester sekitar 30%."
+    }
+  },
+  {
+    "product_id": "prd-017",
+    "name": "Botol Minum Stainless Isi Ulang",
+    "slug": "botol-minum-stainless-isi-ulang",
+    "seller_id": "sel-003",
+    "materials": [
+      "baja tahan karat"
+    ],
+    "origin": "Surabaya, Jawa Timur",
+    "eco_features": [
+      "reusable",
+      "refillable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-017",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-10-04",
+      "valid_until": "2027-10-04",
+      "recycled_material_percent": null,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk dapat digunakan berulang kali, dapat diisi ulang dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-018",
+    "name": "Sikat Gigi Gagang Bambu",
+    "slug": "sikat-gigi-gagang-bambu",
+    "seller_id": "sel-009",
+    "materials": [
+      "bambu"
+    ],
+    "origin": "Denpasar, Bali",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-018",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-09-21",
+      "valid_until": "2027-09-21",
+      "recycled_material_percent": 0,
+      "reusable": false,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dikemas tanpa plastik sekali pakai dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-019",
+    "name": "Sedotan Bambu Alami",
+    "slug": "sedotan-bambu-alami",
+    "seller_id": "sel-001",
+    "materials": [
+      "bambu"
+    ],
+    "origin": "Bandung, Jawa Barat",
+    "eco_features": [
+      "reusable",
+      "biodegradable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-019",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-08-01",
+      "valid_until": "2027-08-01",
+      "recycled_material_percent": null,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk dapat digunakan berulang kali, berbahan yang dapat terurai secara biologis dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-020",
+    "name": "Tas Belanja Jaring Daur Ulang",
+    "slug": "tas-belanja-jaring-daur-ulang",
+    "seller_id": "sel-004",
+    "materials": [
+      "serat PET daur ulang"
+    ],
+    "origin": "Semarang, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "reusable"
+    ],
+    "verification": {
+      "verification_id": "ver-020",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-06-01",
+      "valid_until": "2027-06-01",
+      "recycled_material_percent": 80,
+      "reusable": true,
+      "eco_score": 6.4,
+      "summary": "Hasil uji menunjukkan produk mengandung 80% material daur ulang dan dapat digunakan berulang kali."
+    }
+  },
+  {
+    "product_id": "prd-021",
+    "name": "Dompet Serat Daun Nanas",
+    "slug": "dompet-serat-daun-nanas",
+    "seller_id": "sel-010",
+    "materials": [
+      "serat daun nanas"
+    ],
+    "origin": "Malang, Jawa Timur",
+    "eco_features": [
+      "biodegradable",
+      "organic_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-021",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-06-21",
+      "valid_until": "2027-06-21",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, menggunakan material organik dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-022",
+    "name": "Kantong Belanja Lipat Katun Daur Ulang",
+    "slug": "kantong-belanja-lipat-katun-daur-ulang",
+    "seller_id": "sel-001",
+    "materials": [
+      "katun daur ulang"
+    ],
+    "origin": "Bandung, Jawa Barat",
+    "eco_features": [
+      "recycled_material",
+      "reusable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-022",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-06-29",
+      "valid_until": "2027-06-29",
+      "recycled_material_percent": 40,
+      "reusable": true,
+      "eco_score": 6.2,
+      "summary": "Hasil uji menunjukkan produk mengandung 40% material daur ulang, dapat digunakan berulang kali dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-023",
+    "name": "Gelas Kopi Sekam Padi",
+    "slug": "gelas-kopi-sekam-padi",
+    "seller_id": "sel-008",
+    "materials": [
+      "sekam padi",
+      "resin nabati"
+    ],
+    "origin": "Cirebon, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-023",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2025-11-06",
+      "valid_until": "2026-11-06",
+      "recycled_material_percent": null,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dapat digunakan berulang kali dan memakai bahan utama dari sumber lokal. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-024",
+    "name": "Deterjen Bubuk Buah Lerak",
+    "slug": "deterjen-bubuk-buah-lerak",
+    "seller_id": "sel-011",
+    "materials": [
+      "buah lerak"
+    ],
+    "origin": "Makassar, Sulawesi Selatan",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "water_saving"
+    ],
+    "verification": {
+      "verification_id": "ver-024",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim produk sedang menunggu proses verifikasi."
+    }
+  },
+  {
+    "product_id": "prd-025",
+    "name": "Tas Anyaman Eceng Gondok",
+    "slug": "tas-anyaman-eceng-gondok",
+    "seller_id": "sel-009",
+    "materials": [
+      "eceng gondok"
+    ],
+    "origin": "Denpasar, Bali",
+    "eco_features": [
+      "biodegradable",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-025",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Dokumen diterima dan menunggu penjadwalan pengujian."
+    }
+  },
+  {
+    "product_id": "prd-026",
+    "name": "Pembungkus Hadiah Kain Batik",
+    "slug": "pembungkus-hadiah-kain-batik",
+    "seller_id": "sel-012",
+    "materials": [
+      "katun batik"
+    ],
+    "origin": "Surakarta, Jawa Tengah",
+    "eco_features": [
+      "reusable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-026",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-005",
+        "name": "Lembaga Verifikasi Klaim Lestari"
+      },
+      "tested_at": "2026-07-13",
+      "valid_until": null,
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": null,
+      "summary": "Dokumen pendukung tidak lengkap sehingga klaim tidak dapat diverifikasi."
+    }
+  },
+  {
+    "product_id": "prd-027",
+    "name": "Sikat Cuci Botol Sabut Kelapa",
+    "slug": "sikat-cuci-botol-sabut-kelapa",
+    "seller_id": "sel-004",
+    "materials": [
+      "sabut kelapa",
+      "kayu"
+    ],
+    "origin": "Semarang, Jawa Tengah",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-027",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2025-02-26",
+      "valid_until": "2026-02-26",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Sebelumnya terverifikasi: produk berbahan yang dapat terurai secara biologis, dikemas tanpa plastik sekali pakai dan memakai bahan utama dari sumber lokal. Masa berlaku berakhir pada 26 Februari 2026 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-028",
+    "name": "Kotak Makan Stainless Sekat",
+    "slug": "kotak-makan-stainless-sekat",
+    "seller_id": "sel-002",
+    "materials": [
+      "baja tahan karat"
+    ],
+    "origin": "Sleman, DI Yogyakarta",
+    "eco_features": [
+      "reusable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-028",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-06-03",
+      "valid_until": "2027-06-03",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 4.0,
+      "summary": "Hasil uji menunjukkan produk dapat digunakan berulang kali dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-029",
+    "name": "Talenan Kayu Jati Bekas",
+    "slug": "talenan-kayu-jati-bekas",
+    "seller_id": "sel-005",
+    "materials": [
+      "kayu jati bekas"
+    ],
+    "origin": "Jepara, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-029",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-10-04",
+      "valid_until": "2027-10-04",
+      "recycled_material_percent": 90,
+      "reusable": true,
+      "eco_score": 7.7,
+      "summary": "Hasil uji menunjukkan produk mengandung 90% material daur ulang, dapat digunakan berulang kali dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-030",
+    "name": "Set Sendok Garpu Bambu Travel",
+    "slug": "set-sendok-garpu-bambu-travel",
+    "seller_id": "sel-002",
+    "materials": [
+      "bambu"
+    ],
+    "origin": "Sleman, DI Yogyakarta",
+    "eco_features": [
+      "reusable",
+      "biodegradable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-030",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-08-20",
+      "valid_until": "2027-08-20",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk dapat digunakan berulang kali, berbahan yang dapat terurai secara biologis dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-031",
+    "name": "Piring Pelepah Pinang Press",
+    "slug": "piring-pelepah-pinang-press",
+    "seller_id": "sel-008",
+    "materials": [
+      "pelepah pinang"
+    ],
+    "origin": "Cirebon, Jawa Barat",
+    "eco_features": [
+      "compostable",
+      "biodegradable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-031",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-07-24",
+      "valid_until": "2027-07-24",
+      "recycled_material_percent": null,
+      "reusable": false,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk dapat dikompos pada kondisi yang ditentukan, berbahan yang dapat terurai secara biologis dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-032",
+    "name": "Gelas Kaca Daur Ulang",
+    "slug": "gelas-kaca-daur-ulang",
+    "seller_id": "sel-004",
+    "materials": [
+      "kaca daur ulang"
+    ],
+    "origin": "Semarang, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "reusable"
+    ],
+    "verification": {
+      "verification_id": "ver-032",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-09-10",
+      "valid_until": "2027-09-10",
+      "recycled_material_percent": 95,
+      "reusable": true,
+      "eco_score": 6.9,
+      "summary": "Hasil uji menunjukkan produk mengandung 95% material daur ulang dan dapat digunakan berulang kali."
+    }
+  },
+  {
+    "product_id": "prd-033",
+    "name": "Toples Kaca Tutup Bambu",
+    "slug": "toples-kaca-tutup-bambu",
+    "seller_id": "sel-010",
+    "materials": [
+      "kaca",
+      "bambu"
+    ],
+    "origin": "Malang, Jawa Timur",
+    "eco_features": [
+      "reusable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-033",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-08-04",
+      "valid_until": "2027-08-04",
+      "recycled_material_percent": null,
+      "reusable": true,
+      "eco_score": 4.0,
+      "summary": "Hasil uji menunjukkan produk dapat digunakan berulang kali dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-034",
+    "name": "Keranjang Cuci Rotan",
+    "slug": "keranjang-cuci-rotan",
+    "seller_id": "sel-008",
+    "materials": [
+      "rotan"
+    ],
+    "origin": "Cirebon, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "reusable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-034",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2025-11-08",
+      "valid_until": "2026-11-08",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dapat digunakan berulang kali dan memakai bahan utama dari sumber lokal. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-035",
+    "name": "Sabun Cuci Piring Padat Kelapa",
+    "slug": "sabun-cuci-piring-padat-kelapa",
+    "seller_id": "sel-010",
+    "materials": [
+      "minyak kelapa",
+      "abu soda"
+    ],
+    "origin": "Malang, Jawa Timur",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "water_saving"
+    ],
+    "verification": {
+      "verification_id": "ver-035",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Pengajuan baru masuk; pengujian belum dimulai."
+    }
+  },
+  {
+    "product_id": "prd-036",
+    "name": "Spons Cuci Serat Luffa",
+    "slug": "spons-cuci-serat-luffa",
+    "seller_id": "sel-002",
+    "materials": [
+      "luffa"
+    ],
+    "origin": "Sleman, DI Yogyakarta",
+    "eco_features": [
+      "compostable",
+      "biodegradable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-036",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-08-15",
+      "valid_until": null,
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim compostable tidak lolos uji penguraian karena adanya perekat sintetis pada produk."
+    }
+  },
+  {
+    "product_id": "prd-037",
+    "name": "Lampu Hias Tempurung Kelapa",
+    "slug": "lampu-hias-tempurung-kelapa",
+    "seller_id": "sel-011",
+    "materials": [
+      "tempurung kelapa",
+      "kabel"
+    ],
+    "origin": "Makassar, Sulawesi Selatan",
+    "eco_features": [
+      "energy_efficient",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-037",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-08-18",
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Klaim energy_efficient tidak didukung data konsumsi daya yang memadai."
+    }
+  },
+  {
+    "product_id": "prd-038",
+    "name": "Wadah Bumbu Tanah Liat",
+    "slug": "wadah-bumbu-tanah-liat",
+    "seller_id": "sel-010",
+    "materials": [
+      "tanah liat"
+    ],
+    "origin": "Malang, Jawa Timur",
+    "eco_features": [
+      "reusable",
+      "locally_sourced",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-038",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2025-01-25",
+      "valid_until": "2026-01-25",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Sebelumnya terverifikasi: produk dapat digunakan berulang kali, memakai bahan utama dari sumber lokal dan dikemas tanpa plastik sekali pakai. Masa berlaku berakhir pada 25 Januari 2026 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-039",
+    "name": "Kursi Rotan Anyam Natural",
+    "slug": "kursi-rotan-anyam-natural",
+    "seller_id": "sel-008",
+    "materials": [
+      "rotan"
+    ],
+    "origin": "Cirebon, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "locally_sourced",
+      "reusable"
+    ],
+    "verification": {
+      "verification_id": "ver-039",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-06-20",
+      "valid_until": "2027-06-20",
+      "recycled_material_percent": null,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, memakai bahan utama dari sumber lokal dan dapat digunakan berulang kali."
+    }
+  },
+  {
+    "product_id": "prd-040",
+    "name": "Meja Makan Kayu Jati Bongkaran",
+    "slug": "meja-makan-kayu-jati-bongkaran",
+    "seller_id": "sel-005",
+    "materials": [
+      "kayu jati bekas"
+    ],
+    "origin": "Jepara, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-040",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-08-27",
+      "valid_until": "2027-08-27",
+      "recycled_material_percent": 90,
+      "reusable": true,
+      "eco_score": 6.7,
+      "summary": "Hasil uji menunjukkan produk mengandung 90% material daur ulang dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-041",
+    "name": "Rak Buku Bambu Laminasi",
+    "slug": "rak-buku-bambu-laminasi",
+    "seller_id": "sel-005",
+    "materials": [
+      "bambu laminasi"
+    ],
+    "origin": "Jepara, Jawa Tengah",
+    "eco_features": [
+      "locally_sourced",
+      "biodegradable"
+    ],
+    "verification": {
+      "verification_id": "ver-041",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-06-23",
+      "valid_until": "2027-06-23",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 2.0,
+      "summary": "Hasil uji menunjukkan produk memakai bahan utama dari sumber lokal dan berbahan yang dapat terurai secara biologis."
+    }
+  },
+  {
+    "product_id": "prd-042",
+    "name": "Bangku Kayu Palet Daur Ulang",
+    "slug": "bangku-kayu-palet-daur-ulang",
+    "seller_id": "sel-004",
+    "materials": [
+      "kayu palet"
+    ],
+    "origin": "Semarang, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-042",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-08-14",
+      "valid_until": "2027-08-14",
+      "recycled_material_percent": 80,
+      "reusable": true,
+      "eco_score": 6.4,
+      "summary": "Hasil uji menunjukkan produk mengandung 80% material daur ulang dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-043",
+    "name": "Lemari Pakaian Kayu Mahoni Lestari",
+    "slug": "lemari-pakaian-kayu-mahoni-lestari",
+    "seller_id": "sel-005",
+    "materials": [
+      "kayu mahoni"
+    ],
+    "origin": "Jepara, Jawa Tengah",
+    "eco_features": [
+      "locally_sourced",
+      "biodegradable"
+    ],
+    "verification": {
+      "verification_id": "ver-043",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-08-13",
+      "valid_until": "2027-08-13",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 2.0,
+      "summary": "Hasil uji menunjukkan produk memakai bahan utama dari sumber lokal dan berbahan yang dapat terurai secara biologis."
+    }
+  },
+  {
+    "product_id": "prd-044",
+    "name": "Sofa Rotan Bantalan Kapuk",
+    "slug": "sofa-rotan-bantalan-kapuk",
+    "seller_id": "sel-009",
+    "materials": [
+      "rotan",
+      "kapuk"
+    ],
+    "origin": "Denpasar, Bali",
+    "eco_features": [
+      "organic_material",
+      "biodegradable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-044",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-09-26",
+      "valid_until": "2027-09-26",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk menggunakan material organik, berbahan yang dapat terurai secara biologis dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-045",
+    "name": "Meja Kerja Bambu",
+    "slug": "meja-kerja-bambu",
+    "seller_id": "sel-010",
+    "materials": [
+      "bambu"
+    ],
+    "origin": "Malang, Jawa Timur",
+    "eco_features": [
+      "locally_sourced",
+      "biodegradable"
+    ],
+    "verification": {
+      "verification_id": "ver-045",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2025-11-01",
+      "valid_until": "2026-11-01",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 2.0,
+      "summary": "Hasil uji menunjukkan produk memakai bahan utama dari sumber lokal dan berbahan yang dapat terurai secara biologis. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-046",
+    "name": "Kursi Lipat Ban Bekas",
+    "slug": "kursi-lipat-ban-bekas",
+    "seller_id": "sel-008",
+    "materials": [
+      "ban bekas",
+      "besi"
+    ],
+    "origin": "Cirebon, Jawa Barat",
+    "eco_features": [
+      "recycled_material",
+      "reusable"
+    ],
+    "verification": {
+      "verification_id": "ver-046",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": null,
+      "summary": "Dokumen diterima dan menunggu penjadwalan pengujian."
+    }
+  },
+  {
+    "product_id": "prd-047",
+    "name": "Rak Sepatu Kayu Limbah Mebel",
+    "slug": "rak-sepatu-kayu-limbah-mebel",
+    "seller_id": "sel-005",
+    "materials": [
+      "kayu limbah mebel"
+    ],
+    "origin": "Jepara, Jawa Tengah",
+    "eco_features": [
+      "recycled_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-047",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2024-12-23",
+      "valid_until": "2025-12-23",
+      "recycled_material_percent": 75,
+      "reusable": true,
+      "eco_score": 6.3,
+      "summary": "Sebelumnya terverifikasi: produk mengandung 75% material daur ulang dan memakai bahan utama dari sumber lokal. Masa berlaku berakhir pada 23 Desember 2025 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-048",
+    "name": "Meja Kopi Serbuk Kayu Press",
+    "slug": "meja-kopi-serbuk-kayu-press",
+    "seller_id": "sel-011",
+    "materials": [
+      "serbuk kayu",
+      "resin"
+    ],
+    "origin": "Makassar, Sulawesi Selatan",
+    "eco_features": [
+      "recycled_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-048",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2025-05-09",
+      "valid_until": "2026-05-09",
+      "recycled_material_percent": 70,
+      "reusable": null,
+      "eco_score": 4.1,
+      "summary": "Sebelumnya terverifikasi: produk mengandung 70% material daur ulang dan memakai bahan utama dari sumber lokal. Masa berlaku berakhir pada 9 Mei 2026 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-049",
+    "name": "Kursi HDPE Daur Ulang",
+    "slug": "kursi-hdpe-daur-ulang",
+    "seller_id": "sel-011",
+    "materials": [
+      "HDPE daur ulang"
+    ],
+    "origin": "Makassar, Sulawesi Selatan",
+    "eco_features": [
+      "recycled_material",
+      "reusable"
+    ],
+    "verification": {
+      "verification_id": "ver-049",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2026-07-04",
+      "valid_until": null,
+      "recycled_material_percent": 55,
+      "reusable": true,
+      "eco_score": null,
+      "summary": "Kandungan material daur ulang terukur 55%, tidak sesuai klaim 100%."
+    }
+  },
+  {
+    "product_id": "prd-050",
+    "name": "Sabun Batang Kelapa Zaitun",
+    "slug": "sabun-batang-kelapa-zaitun",
+    "seller_id": "sel-006",
+    "materials": [
+      "minyak kelapa",
+      "minyak zaitun"
+    ],
+    "origin": "Bogor, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-050",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-09-03",
+      "valid_until": "2027-09-03",
+      "recycled_material_percent": 0,
+      "reusable": false,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dikemas tanpa plastik sekali pakai dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-051",
+    "name": "Sampo Batang Teh Hijau",
+    "slug": "sampo-batang-teh-hijau",
+    "seller_id": "sel-006",
+    "materials": [
+      "ekstrak teh hijau",
+      "minyak kelapa"
+    ],
+    "origin": "Bogor, Jawa Barat",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "water_saving"
+    ],
+    "verification": {
+      "verification_id": "ver-051",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-09-02",
+      "valid_until": "2027-09-02",
+      "recycled_material_percent": null,
+      "reusable": false,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dikemas tanpa plastik sekali pakai dan membantu mengurangi penggunaan air."
+    }
+  },
+  {
+    "product_id": "prd-052",
+    "name": "Deodoran Krim Kemasan Kaca",
+    "slug": "deodoran-krim-kemasan-kaca",
+    "seller_id": "sel-006",
+    "materials": [
+      "minyak kelapa",
+      "tepung sagu",
+      "botol kaca"
+    ],
+    "origin": "Bogor, Jawa Barat",
+    "eco_features": [
+      "refillable",
+      "reusable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-052",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-001",
+        "name": "EcoCheck Indonesia"
+      },
+      "tested_at": "2026-09-27",
+      "valid_until": "2027-09-27",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk dapat diisi ulang, dapat digunakan berulang kali dan dikemas tanpa plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-053",
+    "name": "Lulur Kopi Isi Ulang",
+    "slug": "lulur-kopi-isi-ulang",
+    "seller_id": "sel-009",
+    "materials": [
+      "bubuk kopi",
+      "minyak kelapa"
+    ],
+    "origin": "Denpasar, Bali",
+    "eco_features": [
+      "refillable",
+      "organic_material",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-053",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-004",
+        "name": "Balai Sertifikasi Produk Hijau"
+      },
+      "tested_at": "2026-09-17",
+      "valid_until": "2027-09-17",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk dapat diisi ulang, menggunakan material organik dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-054",
+    "name": "Pelembap Wajah Botol Kaca",
+    "slug": "pelembap-wajah-botol-kaca",
+    "seller_id": "sel-003",
+    "materials": [
+      "lidah buaya",
+      "botol kaca"
+    ],
+    "origin": "Surabaya, Jawa Timur",
+    "eco_features": [
+      "refillable",
+      "reusable",
+      "organic_material"
+    ],
+    "verification": {
+      "verification_id": "ver-054",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-005",
+        "name": "Lembaga Verifikasi Klaim Lestari"
+      },
+      "tested_at": "2026-06-24",
+      "valid_until": "2027-06-24",
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": 5.0,
+      "summary": "Hasil uji menunjukkan produk dapat diisi ulang, dapat digunakan berulang kali dan menggunakan material organik."
+    }
+  },
+  {
+    "product_id": "prd-055",
+    "name": "Lip Balm Kemasan Bambu",
+    "slug": "lip-balm-kemasan-bambu",
+    "seller_id": "sel-009",
+    "materials": [
+      "lilin lebah",
+      "bambu"
+    ],
+    "origin": "Denpasar, Bali",
+    "eco_features": [
+      "biodegradable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-055",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-002",
+        "name": "Lembaga Verifikasi Bhumi"
+      },
+      "tested_at": "2026-09-11",
+      "valid_until": "2027-09-11",
+      "recycled_material_percent": null,
+      "reusable": null,
+      "eco_score": 3.0,
+      "summary": "Hasil uji menunjukkan produk berbahan yang dapat terurai secara biologis, dikemas tanpa plastik sekali pakai dan memakai bahan utama dari sumber lokal."
+    }
+  },
+  {
+    "product_id": "prd-056",
+    "name": "Minyak Rambut Kemiri Isi Ulang",
+    "slug": "minyak-rambut-kemiri-isi-ulang",
+    "seller_id": "sel-003",
+    "materials": [
+      "kemiri",
+      "botol kaca"
+    ],
+    "origin": "Surabaya, Jawa Timur",
+    "eco_features": [
+      "refillable",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-056",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-005",
+        "name": "Lembaga Verifikasi Klaim Lestari"
+      },
+      "tested_at": "2025-11-15",
+      "valid_until": "2026-11-15",
+      "recycled_material_percent": 0,
+      "reusable": null,
+      "eco_score": 2.0,
+      "summary": "Hasil uji menunjukkan produk dapat diisi ulang dan memakai bahan utama dari sumber lokal. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-057",
+    "name": "Sabun Cair Daun Sirih Isi Ulang",
+    "slug": "sabun-cair-daun-sirih-isi-ulang",
+    "seller_id": "sel-006",
+    "materials": [
+      "daun sirih",
+      "HDPE daur ulang"
+    ],
+    "origin": "Bogor, Jawa Barat",
+    "eco_features": [
+      "refillable",
+      "recycled_material"
+    ],
+    "verification": {
+      "verification_id": "ver-057",
+      "status": "verified",
+      "partner": {
+        "partner_id": "vfp-003",
+        "name": "Laboratorium Uji Material Nusantara"
+      },
+      "tested_at": "2025-11-14",
+      "valid_until": "2026-11-14",
+      "recycled_material_percent": 50,
+      "reusable": null,
+      "eco_score": 3.5,
+      "summary": "Hasil uji menunjukkan produk dapat diisi ulang dan mengandung 50% material daur ulang. Masa berlaku verifikasi akan segera berakhir."
+    }
+  },
+  {
+    "product_id": "prd-058",
+    "name": "Bedak Dingin Beras Kemasan Kaleng",
+    "slug": "bedak-dingin-beras-kemasan-kaleng",
+    "seller_id": "sel-003",
+    "materials": [
+      "tepung beras",
+      "kaleng aluminium"
+    ],
+    "origin": "Surabaya, Jawa Timur",
+    "eco_features": [
+      "reusable",
+      "plastic_free_packaging",
+      "locally_sourced"
+    ],
+    "verification": {
+      "verification_id": "ver-058",
+      "status": "rejected",
+      "partner": {
+        "partner_id": "vfp-005",
+        "name": "Lembaga Verifikasi Klaim Lestari"
+      },
+      "tested_at": "2026-09-02",
+      "valid_until": null,
+      "recycled_material_percent": 0,
+      "reusable": true,
+      "eco_score": null,
+      "summary": "Klaim plastic_free_packaging tidak sesuai: segel kemasan mengandung plastik sekali pakai."
+    }
+  },
+  {
+    "product_id": "prd-059",
+    "name": "Masker Rambut Alpukat Kemasan Kompos",
+    "slug": "masker-rambut-alpukat-kemasan-kompos",
+    "seller_id": "sel-006",
+    "materials": [
+      "alpukat",
+      "pati singkong"
+    ],
+    "origin": "Bogor, Jawa Barat",
+    "eco_features": [
+      "compostable",
+      "biodegradable",
+      "plastic_free_packaging"
+    ],
+    "verification": {
+      "verification_id": "ver-059",
+      "status": "expired",
+      "partner": {
+        "partner_id": "vfp-005",
+        "name": "Lembaga Verifikasi Klaim Lestari"
+      },
+      "tested_at": "2025-08-16",
+      "valid_until": "2026-08-16",
+      "recycled_material_percent": null,
+      "reusable": false,
+      "eco_score": 3.0,
+      "summary": "Sebelumnya terverifikasi: produk dapat dikompos pada kondisi yang ditentukan, berbahan yang dapat terurai secara biologis dan dikemas tanpa plastik sekali pakai. Masa berlaku berakhir pada 16 Agustus 2026 dan perlu diajukan ulang."
+    }
+  },
+  {
+    "product_id": "prd-060",
+    "name": "Pasta Gigi Tablet Isi Ulang",
+    "slug": "pasta-gigi-tablet-isi-ulang",
+    "seller_id": "sel-011",
+    "materials": [
+      "kalsium karbonat",
+      "mint"
+    ],
+    "origin": "Makassar, Sulawesi Selatan",
+    "eco_features": [
+      "refillable",
+      "plastic_free_packaging",
+      "water_saving"
+    ],
+    "verification": {
+      "verification_id": "ver-060",
+      "status": "pending",
+      "partner": null,
+      "tested_at": null,
+      "valid_until": null,
+      "recycled_material_percent": null,
+      "reusable": null,
       "eco_score": null,
       "summary": "Klaim produk sedang menunggu proses verifikasi."
     }
