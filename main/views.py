@@ -1,4 +1,5 @@
 import json
+import secrets
 from pathlib import Path
 
 from django.conf import settings
@@ -10,6 +11,16 @@ from django.views.decorators.csrf import csrf_exempt
 from main.models import *
 
 DATA_DIR = Path(settings.BASE_DIR) / "data"
+
+
+def _authorized_writer(request):
+    expected = settings.MOCK_API_WRITE_TOKEN
+    supplied = request.headers.get("X-Mock-Api-Key", "")
+    return bool(expected and supplied and secrets.compare_digest(supplied, expected))
+
+
+def _unauthorized_writer_response():
+    return JsonResponse({"success": False, "error": {"code": "UNAUTHORIZED", "message": "Kunci API tidak valid"}}, status=401)
 
 
 def _read_json_file(file_path: Path):
@@ -44,14 +55,14 @@ def load_raw_products():
 
 
 def sync_data_from_files():
-    """Seed or update database records from JSON files in data/."""
+    """Add missing seed products and verifications without replacing live records."""
     sellers_data = load_raw_sellers()
     partners_data = load_raw_verification_partners()
     products_data = load_raw_products()
 
     with transaction.atomic():
         for seller_item in sellers_data:
-            Seller.objects.update_or_create(
+            Seller.objects.get_or_create(
                 seller_id=seller_item["seller_id"],
                 defaults={
                     "name": seller_item.get("name", ""),
@@ -60,7 +71,7 @@ def sync_data_from_files():
             )
 
         for partner_item in partners_data:
-            VerificationPartner.objects.update_or_create(
+            VerificationPartner.objects.get_or_create(
                 partner_id=partner_item["partner_id"],
                 defaults={
                     "name": partner_item.get("name", ""),
@@ -73,7 +84,7 @@ def sync_data_from_files():
             if seller_id:
                 seller_obj = Seller.objects.filter(pk=seller_id).first()
 
-            product_obj, _ = Product.objects.update_or_create(
+            product_obj, _ = Product.objects.get_or_create(
                 product_id=product_item["product_id"],
                 defaults={
                     "name": product_item.get("name", ""),
@@ -90,7 +101,7 @@ def sync_data_from_files():
                 partner_data = verification_data.get("partner")
                 partner_obj = None
                 if isinstance(partner_data, dict) and partner_data.get("partner_id"):
-                    partner_obj, _ = VerificationPartner.objects.update_or_create(
+                    partner_obj, _ = VerificationPartner.objects.get_or_create(
                         partner_id=partner_data["partner_id"],
                         defaults={"name": partner_data.get("name", "")},
                     )
@@ -116,8 +127,10 @@ def sync_data_from_files():
                     "summary": verification_data.get("summary"),
                 }
 
-                ProductVerification.objects.update_or_create(
-                    verification_id=verification_data["verification_id"],
+                # Seed data must never overwrite an admin decision or a live submission.
+                defaults.pop("product")
+                ProductVerification.objects.get_or_create(
+                    product=product_obj,
                     defaults=defaults,
                 )
 
@@ -315,6 +328,8 @@ def _create_or_update_product_submission(payload, uploaded_file=None, explicit_p
 @csrf_exempt
 def get_products(request):
     if request.method == "POST":
+        if not _authorized_writer(request):
+            return _unauthorized_writer_response()
         payload = _extract_product_payload(request)
         uploaded_file = (
             request.FILES.get("verification_document")
@@ -479,6 +494,9 @@ def upload_verification_document(request, id=None):
             },
             status=405,
         )
+
+    if not _authorized_writer(request):
+        return _unauthorized_writer_response()
 
     uploaded_file = (
         request.FILES.get("verification_document")
