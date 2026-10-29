@@ -12,19 +12,25 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0u$&o6)^y^wvo&k(+ctk2y#gh=cbggasn0qho597pv)=t)j5kt'
+PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-local-mockapi-only' if not PRODUCTION else '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not PRODUCTION
+MOCK_API_WRITE_TOKEN = os.getenv('MOCK_API_WRITE_TOKEN', '')
+if PRODUCTION and (not SECRET_KEY or not MOCK_API_WRITE_TOKEN):
+    raise RuntimeError('DJANGO_SECRET_KEY and MOCK_API_WRITE_TOKEN are required in production')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'alfarrel-ersya-bhumilestari-mockapi.pws.cs.ui.ac.id']
 
@@ -75,7 +81,6 @@ WSGI_APPLICATION = 'EcoCertificationCompany.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 if PRODUCTION:
     DATABASES = {
         'default': {

@@ -5,7 +5,7 @@ from main.views import sync_data_from_files
 
 
 class Command(BaseCommand):
-    help = "Load and synchronize mock data from the data/ directory into the database."
+    help = "Add missing seed records from data/ without overwriting live records."
 
     def handle(self, *args, **options):
         sync_data_from_files()
