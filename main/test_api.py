@@ -34,7 +34,7 @@ class ReadOnlyDRFAPITest(TestCase):
             partner=self.partner,
             tested_at=date(2026, 1, 1),
             valid_until=date(2027, 1, 1),
-            eco_score=92.5,
+            eco_score=9.2,
             summary="Lolos verifikasi",
         )
         self.pending_product = Product.objects.create(
@@ -445,7 +445,7 @@ class VerificationUpdateDRFAPITest(TestCase):
                 "valid_until": "2027-01-01",
                 "recycled_material_percent": 85,
                 "reusable": True,
-                "eco_score": 92.5,
+                "eco_score": 9.2,
                 "summary": "Lolos seluruh kriteria",
             },
             content_type="application/json",
@@ -456,7 +456,7 @@ class VerificationUpdateDRFAPITest(TestCase):
         self.verification.refresh_from_db()
         self.assertEqual(self.verification.status, "verified")
         self.assertEqual(self.verification.partner, self.partner)
-        self.assertEqual(self.verification.eco_score, 92.5)
+        self.assertEqual(self.verification.eco_score, 9.2)
         self.assertTrue(response.json()["data"]["certification"])
 
     def test_patch_menolak_status_tidak_valid(self):
@@ -469,6 +469,17 @@ class VerificationUpdateDRFAPITest(TestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertIn("status", response.json()["error"]["details"])
+
+    def test_patch_menolak_eco_score_di_luar_skala(self):
+        response = self.client.patch(
+            self.endpoint,
+            {"eco_score": 10.1},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("eco_score", response.json()["error"]["details"])
 
     def test_patch_menolak_urutan_tanggal_tidak_valid(self):
         response = self.client.patch(

@@ -242,7 +242,7 @@ class VerificationUpdateSerializer(serializers.Serializer):
         required=False,
         allow_null=True,
         min_value=0,
-        max_value=100,
+        max_value=10,
     )
     summary = serializers.CharField(
         required=False,
