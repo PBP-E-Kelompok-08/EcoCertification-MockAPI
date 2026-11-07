@@ -306,3 +306,91 @@ class ProductDeleteDRFAPITest(TestCase):
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")
+
+
+@override_settings(MOCK_API_WRITE_TOKEN="test-shared-key")
+class VerificationDocumentUploadDRFAPITest(TestCase):
+    def setUp(self):
+        self.product = Product.objects.create(
+            product_id="prd-document",
+            name="Produk Dokumen",
+            materials=[],
+            eco_features=[],
+        )
+        self.verification = ProductVerification.objects.create(
+            verification_id="ver-document",
+            product=self.product,
+            status="pending",
+        )
+        self.product_endpoint = reverse(
+            "main_api:product-document",
+            args=[self.product.pk],
+        )
+
+    def _document(self):
+        return SimpleUploadedFile(
+            "hasil-uji.pdf",
+            b"dokumen uji",
+            content_type="application/pdf",
+        )
+
+    def test_upload_memerlukan_api_key(self):
+        response = self.client.post(
+            self.product_endpoint,
+            {"verification_document": self._document()},
+        )
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json()["error"]["code"], "UNAUTHORIZED")
+
+    def test_upload_memerlukan_dokumen(self):
+        response = self.client.post(
+            self.product_endpoint,
+            {},
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["error"]["code"], "MISSING_DOCUMENT")
+
+    def test_upload_berdasarkan_product_id(self):
+        with tempfile.TemporaryDirectory() as media_root:
+            with override_settings(MEDIA_ROOT=media_root):
+                response = self.client.post(
+                    self.product_endpoint,
+                    {"verification_document": self._document()},
+                    HTTP_X_MOCK_API_KEY="test-shared-key",
+                )
+
+                self.assertEqual(response.status_code, 201)
+                self.verification.refresh_from_db()
+                self.assertTrue(self.verification.verification_document.name)
+                self.assertNotIn("verification_document", response.json()["data"])
+
+    def test_upload_berdasarkan_verification_id(self):
+        with tempfile.TemporaryDirectory() as media_root:
+            with override_settings(MEDIA_ROOT=media_root):
+                response = self.client.post(
+                    reverse("main_api:verification-document"),
+                    {
+                        "verification_id": self.verification.pk,
+                        "file": self._document(),
+                    },
+                    HTTP_X_MOCK_API_KEY="test-shared-key",
+                )
+
+                self.assertEqual(response.status_code, 201)
+                self.assertEqual(
+                    response.json()["data"]["verification_id"],
+                    self.verification.pk,
+                )
+
+    def test_upload_produk_tidak_ditemukan(self):
+        response = self.client.post(
+            reverse("main_api:product-document", args=["tidak-ada"]),
+            {"document": self._document()},
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")

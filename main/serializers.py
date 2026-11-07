@@ -194,3 +194,28 @@ class ProductUpdateSerializer(serializers.Serializer):
             verification.save(update_fields=["verification_document"])
 
         return instance
+
+
+class VerificationDocumentUploadSerializer(serializers.Serializer):
+    product_id = serializers.CharField(max_length=50, required=False)
+    verification_id = serializers.CharField(max_length=50, required=False)
+    verification_document = serializers.FileField(required=False, write_only=True)
+    document = serializers.FileField(required=False, write_only=True)
+    file = serializers.FileField(required=False, write_only=True)
+
+    def validate(self, attrs):
+        uploaded_file = (
+            attrs.pop("verification_document", None)
+            or attrs.pop("document", None)
+            or attrs.pop("file", None)
+        )
+        if uploaded_file is None:
+            raise serializers.ValidationError(
+                {
+                    "verification_document": (
+                        "File wajib diunggah melalui multipart/form-data."
+                    )
+                }
+            )
+        attrs["uploaded_file"] = uploaded_file
+        return attrs

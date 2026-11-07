@@ -5,6 +5,7 @@ from .api_views import (
     ProductDetailAPIView,
     ProductListAPIView,
     SellerListAPIView,
+    VerificationDocumentUploadAPIView,
     VerificationPartnerListAPIView,
 )
 
@@ -18,6 +19,16 @@ urlpatterns = [
         "products/<str:product_id>/certification/",
         ProductCertificationAPIView.as_view(),
         name="product-certification",
+    ),
+    path(
+        "products/<str:product_id>/document/",
+        VerificationDocumentUploadAPIView.as_view(),
+        name="product-document",
+    ),
+    path(
+        "verify/document/",
+        VerificationDocumentUploadAPIView.as_view(),
+        name="verification-document",
     ),
     path("sellers/", SellerListAPIView.as_view(), name="sellers"),
     path(

@@ -12,6 +12,7 @@ from .serializers import (
     ProductUpdateSerializer,
     ProductVerificationSerializer,
     SellerSerializer,
+    VerificationDocumentUploadSerializer,
     VerificationPartnerSerializer,
 )
 from .views import (
@@ -292,6 +293,81 @@ class ProductCertificationAPIView(APIView):
                 },
             },
             status=404,
+        )
+
+
+class VerificationDocumentUploadAPIView(APIView):
+    permission_classes = [HasMockAPIWriteKey]
+
+    def post(self, request, product_id=None):
+        serializer = VerificationDocumentUploadSerializer(data=request.data)
+        if not serializer.is_valid():
+            details = serializer.errors
+            error_code = (
+                "MISSING_DOCUMENT"
+                if "verification_document" in details
+                else "VALIDATION_ERROR"
+            )
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": error_code,
+                        "message": (
+                            "File 'verification_document' wajib diunggah melalui "
+                            "multipart/form-data"
+                        ),
+                        "details": details,
+                    },
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        data = serializer.validated_data
+        requested_product_id = product_id or data.get("product_id")
+        verification_id = data.get("verification_id")
+        verification = None
+
+        if requested_product_id:
+            product = Product.objects.filter(pk=requested_product_id).first()
+            if product is not None:
+                verification, _ = ProductVerification.objects.get_or_create(
+                    product=product,
+                    defaults={"status": "pending"},
+                )
+        elif verification_id:
+            verification = ProductVerification.objects.filter(
+                pk=verification_id
+            ).first()
+
+        if verification is None:
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "PRODUCT_NOT_FOUND",
+                        "message": "Data verifikasi produk tidak ditemukan",
+                    },
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        verification.verification_document = data["uploaded_file"]
+        verification.save(update_fields=["verification_document"])
+        return Response(
+            {
+                "success": True,
+                "message": "Dokumen verifikasi berhasil diunggah.",
+                "meta": {},
+                "data": {
+                    "product_id": verification.product_id,
+                    "verification_id": verification.verification_id,
+                    "status": verification.status,
+                },
+            },
+            status=status.HTTP_201_CREATED,
         )
 
 
