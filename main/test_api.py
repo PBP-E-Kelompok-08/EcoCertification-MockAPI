@@ -1,6 +1,8 @@
+import tempfile
 from datetime import date
 
-from django.test import TestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from .models import Product, ProductVerification, Seller, VerificationPartner
@@ -110,3 +112,79 @@ class ReadOnlyDRFAPITest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["data"][0]["partner_id"], self.partner.pk)
+
+
+@override_settings(MOCK_API_WRITE_TOKEN="test-shared-key")
+class ProductSubmissionDRFAPITest(TestCase):
+    endpoint = "/api/v1/products/"
+
+    def test_post_memerlukan_api_key(self):
+        response = self.client.post(
+            self.endpoint,
+            {"name": "Tas Uji"},
+            content_type="application/json",
+        )
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json()["error"]["code"], "UNAUTHORIZED")
+
+    def test_post_membuat_produk_dengan_status_pending(self):
+        response = self.client.post(
+            self.endpoint,
+            {
+                "product_id": "prd-drf-test",
+                "name": "Tas Daur Ulang",
+                "seller_id": "sel-drf-test",
+                "seller_name": "Toko Lestari",
+                "origin": "Bandung",
+                "materials": ["plastik daur ulang"],
+                "eco_features": ["recycled", "reusable"],
+            },
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 201)
+        data = response.json()["data"]
+        self.assertEqual(data["product_id"], "prd-drf-test")
+        self.assertEqual(data["verification"]["status"], "pending")
+        self.assertNotIn("verification_document", data["verification"])
+        self.assertTrue(Product.objects.filter(pk="prd-drf-test").exists())
+
+    def test_post_menolak_payload_tanpa_nama(self):
+        response = self.client.post(
+            self.endpoint,
+            {"seller_id": "sel-drf-test"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["error"]["code"], "VALIDATION_ERROR")
+        self.assertIn("name", response.json()["error"]["details"])
+
+    def test_post_menyimpan_dokumen_tanpa_mengeksposnya(self):
+        with tempfile.TemporaryDirectory() as media_root:
+            document = SimpleUploadedFile(
+                "hasil-uji.pdf",
+                b"dokumen uji",
+                content_type="application/pdf",
+            )
+            with override_settings(MEDIA_ROOT=media_root):
+                response = self.client.post(
+                    self.endpoint,
+                    {
+                        "product_id": "prd-drf-document",
+                        "name": "Produk Berdokumen",
+                        "verification_document": document,
+                    },
+                    HTTP_X_MOCK_API_KEY="test-shared-key",
+                )
+
+                self.assertEqual(response.status_code, 201)
+                product = Product.objects.get(pk="prd-drf-document")
+                self.assertTrue(product.verification.verification_document.name)
+                self.assertNotIn(
+                    "verification_document",
+                    response.json()["data"]["verification"],
+                )

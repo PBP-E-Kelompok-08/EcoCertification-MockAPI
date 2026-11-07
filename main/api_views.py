@@ -1,11 +1,14 @@
 from django.db import OperationalError, ProgrammingError
+from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Product, ProductVerification, Seller, VerificationPartner
+from .permissions import HasMockAPIWriteKey
 from .serializers import (
     ProductSerializer,
+    ProductSubmissionSerializer,
     ProductVerificationSerializer,
     SellerSerializer,
     VerificationPartnerSerializer,
@@ -42,7 +45,7 @@ def _product_queryset():
 
 
 class ProductListAPIView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [HasMockAPIWriteKey]
 
     def get(self, request):
         try:
@@ -89,6 +92,33 @@ class ProductListAPIView(APIView):
             data = products
 
         return Response({"meta": {"count": len(data)}, "data": data})
+
+    def post(self, request):
+        serializer = ProductSubmissionSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Data produk tidak valid",
+                        "details": serializer.errors,
+                    },
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        product = serializer.save()
+        return Response(
+            {
+                "success": True,
+                "message": "Produk berhasil disimpan dan menunggu verifikasi admin.",
+                "meta": {},
+                "data": ProductSerializer(product).data,
+            },
+            status=status.HTTP_201_CREATED,
+        )
 
 
 class ProductDetailAPIView(APIView):
