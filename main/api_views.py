@@ -9,6 +9,7 @@ from .permissions import HasMockAPIWriteKey
 from .serializers import (
     ProductSerializer,
     ProductSubmissionSerializer,
+    ProductUpdateSerializer,
     ProductVerificationSerializer,
     SellerSerializer,
     VerificationPartnerSerializer,
@@ -122,7 +123,7 @@ class ProductListAPIView(APIView):
 
 
 class ProductDetailAPIView(APIView):
-    permission_classes = [AllowAny]
+    permission_classes = [HasMockAPIWriteKey]
 
     def get(self, request, product_id):
         try:
@@ -150,6 +151,56 @@ class ProductDetailAPIView(APIView):
                 },
             },
             status=404,
+        )
+
+    def put(self, request, product_id):
+        return self._update(request, product_id, partial=False)
+
+    def patch(self, request, product_id):
+        return self._update(request, product_id, partial=True)
+
+    def _update(self, request, product_id, partial):
+        product = Product.objects.filter(pk=product_id).first()
+        if product is None:
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "PRODUCT_NOT_FOUND",
+                        "message": "Produk tidak ditemukan",
+                    },
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        serializer = ProductUpdateSerializer(
+            product,
+            data=request.data,
+            partial=partial,
+        )
+        if not serializer.is_valid():
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Data produk tidak valid",
+                        "details": serializer.errors,
+                    },
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        product = serializer.save()
+        return Response(
+            {
+                "success": True,
+                "message": "Produk berhasil diperbarui.",
+                "meta": {},
+                "data": ProductSerializer(product).data,
+            }
         )
 
 

@@ -188,3 +188,75 @@ class ProductSubmissionDRFAPITest(TestCase):
                     "verification_document",
                     response.json()["data"]["verification"],
                 )
+
+
+@override_settings(MOCK_API_WRITE_TOKEN="test-shared-key")
+class ProductUpdateDRFAPITest(TestCase):
+    def setUp(self):
+        self.seller = Seller.objects.create(
+            seller_id="sel-update",
+            name="Seller Awal",
+            origin="Bogor",
+        )
+        self.product = Product.objects.create(
+            product_id="prd-update",
+            name="Nama Awal",
+            seller=self.seller,
+            materials=["kayu"],
+            origin="Bogor",
+            eco_features=["reusable"],
+        )
+        ProductVerification.objects.create(
+            verification_id="ver-update",
+            product=self.product,
+            status="verified",
+        )
+        self.endpoint = reverse("main_api:product-detail", args=[self.product.pk])
+
+    def test_patch_memerlukan_api_key(self):
+        response = self.client.patch(
+            self.endpoint,
+            {"name": "Nama Baru"},
+            content_type="application/json",
+        )
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json()["error"]["code"], "UNAUTHORIZED")
+
+    def test_patch_hanya_memperbarui_field_yang_dikirim(self):
+        response = self.client.patch(
+            self.endpoint,
+            {"name": "Nama Baru", "origin": "Bandung"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.product.refresh_from_db()
+        self.product.verification.refresh_from_db()
+        self.assertEqual(self.product.name, "Nama Baru")
+        self.assertEqual(self.product.origin, "Bandung")
+        self.assertEqual(self.product.materials, ["kayu"])
+        self.assertEqual(self.product.verification.status, "verified")
+
+    def test_put_memerlukan_nama(self):
+        response = self.client.put(
+            self.endpoint,
+            {"origin": "Bandung"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("name", response.json()["error"]["details"])
+
+    def test_patch_produk_tidak_ditemukan(self):
+        response = self.client.patch(
+            reverse("main_api:product-detail", args=["tidak-ada"]),
+            {"name": "Nama Baru"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")

@@ -127,3 +127,70 @@ class ProductSubmissionSerializer(serializers.Serializer):
             verification_document=uploaded_file,
         )
         return product
+
+
+class ProductUpdateSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=120)
+    slug = serializers.SlugField(max_length=150, required=False)
+    seller_id = serializers.CharField(max_length=50, required=False, allow_blank=True)
+    seller_name = serializers.CharField(
+        max_length=255,
+        required=False,
+        allow_blank=True,
+    )
+    materials = serializers.ListField(
+        child=serializers.CharField(),
+        required=False,
+    )
+    origin = serializers.CharField(
+        max_length=255,
+        required=False,
+        allow_blank=True,
+    )
+    eco_features = serializers.ListField(
+        child=serializers.CharField(),
+        required=False,
+    )
+    verification_document = serializers.FileField(required=False, write_only=True)
+
+    def validate_slug(self, value):
+        products = Product.objects.filter(slug=value)
+        if self.instance is not None:
+            products = products.exclude(pk=self.instance.pk)
+        if products.exists():
+            raise serializers.ValidationError("Slug sudah digunakan.")
+        return value
+
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        uploaded_file = validated_data.pop("verification_document", None)
+        seller_was_provided = "seller_id" in validated_data
+        seller_id = validated_data.pop("seller_id", "").strip()
+        seller_name = validated_data.pop("seller_name", "").strip()
+
+        if seller_was_provided:
+            if seller_id:
+                seller, _ = Seller.objects.get_or_create(
+                    seller_id=seller_id,
+                    defaults={
+                        "name": seller_name or seller_id,
+                        "origin": validated_data.get("origin", instance.origin),
+                    },
+                )
+                instance.seller = seller
+            else:
+                instance.seller = None
+
+        for field, value in validated_data.items():
+            setattr(instance, field, value)
+        instance.save()
+
+        if uploaded_file is not None:
+            verification, _ = ProductVerification.objects.get_or_create(
+                product=instance,
+                defaults={"status": VerificationStatus.PENDING},
+            )
+            verification.verification_document = uploaded_file
+            verification.save(update_fields=["verification_document"])
+
+        return instance
