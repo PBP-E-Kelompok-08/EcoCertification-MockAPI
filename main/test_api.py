@@ -394,3 +394,117 @@ class VerificationDocumentUploadDRFAPITest(TestCase):
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")
+
+
+@override_settings(MOCK_API_WRITE_TOKEN="test-shared-key")
+class VerificationUpdateDRFAPITest(TestCase):
+    def setUp(self):
+        self.partner = VerificationPartner.objects.create(
+            partner_id="partner-update",
+            name="Lab Hijau",
+        )
+        self.product = Product.objects.create(
+            product_id="prd-verification-update",
+            name="Produk Verifikasi",
+            materials=[],
+            eco_features=[],
+        )
+        self.verification = ProductVerification.objects.create(
+            verification_id="ver-update-api",
+            product=self.product,
+            status="pending",
+        )
+        self.endpoint = reverse(
+            "main_api:verification-detail",
+            args=[self.verification.pk],
+        )
+
+    def test_get_tetap_publik_dan_tidak_mengekspos_dokumen(self):
+        response = self.client.get(self.endpoint)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotIn("verification_document", response.json()["data"])
+
+    def test_patch_memerlukan_api_key(self):
+        response = self.client.patch(
+            self.endpoint,
+            {"status": "verified"},
+            content_type="application/json",
+        )
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json()["error"]["code"], "UNAUTHORIZED")
+
+    def test_patch_memperbarui_hasil_verifikasi(self):
+        response = self.client.patch(
+            self.endpoint,
+            {
+                "status": "verified",
+                "partner_id": self.partner.pk,
+                "tested_at": "2026-01-01",
+                "valid_until": "2027-01-01",
+                "recycled_material_percent": 85,
+                "reusable": True,
+                "eco_score": 92.5,
+                "summary": "Lolos seluruh kriteria",
+            },
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.verification.refresh_from_db()
+        self.assertEqual(self.verification.status, "verified")
+        self.assertEqual(self.verification.partner, self.partner)
+        self.assertEqual(self.verification.eco_score, 92.5)
+        self.assertTrue(response.json()["data"]["certification"])
+
+    def test_patch_menolak_status_tidak_valid(self):
+        response = self.client.patch(
+            self.endpoint,
+            {"status": "approved"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("status", response.json()["error"]["details"])
+
+    def test_patch_menolak_urutan_tanggal_tidak_valid(self):
+        response = self.client.patch(
+            self.endpoint,
+            {
+                "tested_at": "2027-01-01",
+                "valid_until": "2026-01-01",
+            },
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("valid_until", response.json()["error"]["details"])
+
+    def test_put_memerlukan_status(self):
+        response = self.client.put(
+            self.endpoint,
+            {"summary": "Tanpa status"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("status", response.json()["error"]["details"])
+
+    def test_patch_verifikasi_tidak_ditemukan(self):
+        response = self.client.patch(
+            reverse("main_api:verification-detail", args=["tidak-ada"]),
+            {"status": "verified"},
+            content_type="application/json",
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json()["error"]["code"],
+            "VERIFICATION_NOT_FOUND",
+        )

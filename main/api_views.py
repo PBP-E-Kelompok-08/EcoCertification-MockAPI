@@ -14,6 +14,7 @@ from .serializers import (
     SellerSerializer,
     VerificationDocumentUploadSerializer,
     VerificationPartnerSerializer,
+    VerificationUpdateSerializer,
 )
 from .views import (
     load_raw_products,
@@ -368,6 +369,81 @@ class VerificationDocumentUploadAPIView(APIView):
                 },
             },
             status=status.HTTP_201_CREATED,
+        )
+
+
+class VerificationDetailAPIView(APIView):
+    permission_classes = [HasMockAPIWriteKey]
+
+    def get(self, request, verification_id):
+        verification = self._get_verification(verification_id)
+        if verification is None:
+            return self._not_found_response()
+        return Response(
+            {
+                "meta": {},
+                "data": ProductVerificationSerializer(verification).data,
+            }
+        )
+
+    def put(self, request, verification_id):
+        return self._update(request, verification_id, partial=False)
+
+    def patch(self, request, verification_id):
+        return self._update(request, verification_id, partial=True)
+
+    def _update(self, request, verification_id, partial):
+        verification = self._get_verification(verification_id)
+        if verification is None:
+            return self._not_found_response()
+
+        serializer = VerificationUpdateSerializer(
+            verification,
+            data=request.data,
+            partial=partial,
+        )
+        if not serializer.is_valid():
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "Data verifikasi tidak valid",
+                        "details": serializer.errors,
+                    },
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        verification = serializer.save()
+        return Response(
+            {
+                "success": True,
+                "message": "Hasil verifikasi berhasil diperbarui.",
+                "meta": {},
+                "data": ProductVerificationSerializer(verification).data,
+            }
+        )
+
+    @staticmethod
+    def _get_verification(verification_id):
+        return ProductVerification.objects.select_related("partner").filter(
+            pk=verification_id
+        ).first()
+
+    @staticmethod
+    def _not_found_response():
+        return Response(
+            {
+                "success": False,
+                "meta": {},
+                "error": {
+                    "code": "VERIFICATION_NOT_FOUND",
+                    "message": "Data verifikasi tidak ditemukan",
+                },
+            },
+            status=status.HTTP_404_NOT_FOUND,
         )
 
 

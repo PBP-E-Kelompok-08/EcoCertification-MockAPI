@@ -5,6 +5,7 @@ from .api_views import (
     ProductDetailAPIView,
     ProductListAPIView,
     SellerListAPIView,
+    VerificationDetailAPIView,
     VerificationDocumentUploadAPIView,
     VerificationPartnerListAPIView,
 )
@@ -29,6 +30,11 @@ urlpatterns = [
         "verify/document/",
         VerificationDocumentUploadAPIView.as_view(),
         name="verification-document",
+    ),
+    path(
+        "verifications/<str:verification_id>/",
+        VerificationDetailAPIView.as_view(),
+        name="verification-detail",
     ),
     path("sellers/", SellerListAPIView.as_view(), name="sellers"),
     path(

@@ -219,3 +219,62 @@ class VerificationDocumentUploadSerializer(serializers.Serializer):
             )
         attrs["uploaded_file"] = uploaded_file
         return attrs
+
+
+class VerificationUpdateSerializer(serializers.Serializer):
+    status = serializers.ChoiceField(choices=VerificationStatus.choices)
+    partner_id = serializers.CharField(
+        max_length=50,
+        required=False,
+        allow_blank=True,
+        allow_null=True,
+    )
+    tested_at = serializers.DateField(required=False, allow_null=True)
+    valid_until = serializers.DateField(required=False, allow_null=True)
+    recycled_material_percent = serializers.IntegerField(
+        required=False,
+        allow_null=True,
+        min_value=0,
+        max_value=100,
+    )
+    reusable = serializers.BooleanField(required=False, allow_null=True)
+    eco_score = serializers.FloatField(
+        required=False,
+        allow_null=True,
+        min_value=0,
+        max_value=100,
+    )
+    summary = serializers.CharField(
+        required=False,
+        allow_blank=True,
+        allow_null=True,
+    )
+
+    def validate_partner_id(self, value):
+        if value and not VerificationPartner.objects.filter(pk=value).exists():
+            raise serializers.ValidationError("Partner verifikasi tidak ditemukan.")
+        return value
+
+    def validate(self, attrs):
+        tested_at = attrs.get("tested_at", self.instance.tested_at)
+        valid_until = attrs.get("valid_until", self.instance.valid_until)
+        if tested_at and valid_until and valid_until < tested_at:
+            raise serializers.ValidationError(
+                {"valid_until": "Tanggal berlaku tidak boleh sebelum tanggal pengujian."}
+            )
+        return attrs
+
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        if "partner_id" in validated_data:
+            partner_id = validated_data.pop("partner_id")
+            instance.partner = (
+                VerificationPartner.objects.get(pk=partner_id)
+                if partner_id
+                else None
+            )
+
+        for field, value in validated_data.items():
+            setattr(instance, field, value)
+        instance.save()
+        return instance
