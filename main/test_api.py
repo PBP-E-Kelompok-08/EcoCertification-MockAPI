@@ -260,3 +260,49 @@ class ProductUpdateDRFAPITest(TestCase):
 
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")
+
+
+@override_settings(MOCK_API_WRITE_TOKEN="test-shared-key")
+class ProductDeleteDRFAPITest(TestCase):
+    def setUp(self):
+        self.product = Product.objects.create(
+            product_id="prd-delete",
+            name="Produk Hapus",
+            materials=[],
+            eco_features=[],
+        )
+        self.verification = ProductVerification.objects.create(
+            verification_id="ver-delete",
+            product=self.product,
+            status="pending",
+        )
+        self.endpoint = reverse("main_api:product-detail", args=[self.product.pk])
+
+    def test_delete_memerlukan_api_key(self):
+        response = self.client.delete(self.endpoint)
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json()["error"]["code"], "UNAUTHORIZED")
+        self.assertTrue(Product.objects.filter(pk=self.product.pk).exists())
+
+    def test_delete_menghapus_produk_dan_verifikasi(self):
+        response = self.client.delete(
+            self.endpoint,
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["data"]["product_id"], self.product.pk)
+        self.assertFalse(Product.objects.filter(pk=self.product.pk).exists())
+        self.assertFalse(
+            ProductVerification.objects.filter(pk=self.verification.pk).exists()
+        )
+
+    def test_delete_produk_tidak_ditemukan(self):
+        response = self.client.delete(
+            reverse("main_api:product-detail", args=["tidak-ada"]),
+            HTTP_X_MOCK_API_KEY="test-shared-key",
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json()["error"]["code"], "PRODUCT_NOT_FOUND")

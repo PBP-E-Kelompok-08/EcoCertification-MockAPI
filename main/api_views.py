@@ -159,6 +159,32 @@ class ProductDetailAPIView(APIView):
     def patch(self, request, product_id):
         return self._update(request, product_id, partial=True)
 
+    def delete(self, request, product_id):
+        product = Product.objects.filter(pk=product_id).first()
+        if product is None:
+            return Response(
+                {
+                    "success": False,
+                    "meta": {},
+                    "error": {
+                        "code": "PRODUCT_NOT_FOUND",
+                        "message": "Produk tidak ditemukan",
+                    },
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        deleted_product_id = product.product_id
+        product.delete()
+        return Response(
+            {
+                "success": True,
+                "message": "Produk berhasil dihapus.",
+                "meta": {},
+                "data": {"product_id": deleted_product_id},
+            }
+        )
+
     def _update(self, request, product_id, partial):
         product = Product.objects.filter(pk=product_id).first()
         if product is None:
