@@ -23,6 +23,7 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("main.urls")),
+    path("api/v1/", include("main.api_urls")),
     re_path(
         r"^media/(?P<path>.*)$",
         staff_member_required(serve),
